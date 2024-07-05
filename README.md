@@ -1,3 +1,3 @@
-# Analyzing vocalizations of non-verbal individials (name in progress)
+# Analyzing vocalizations of non-verbal individuals (name in progress)
 
-Project for Erdos Institute Deep Learning bootcamp, May-Summer 2024.
+Project for Erdős Institute Deep Learning bootcamp, May-Summer 2024.
