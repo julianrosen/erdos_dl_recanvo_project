@@ -32,7 +32,7 @@ pd.testing.assert_frame_equal(test_df, file_directory_df.iloc[test_idx])
 # Add a column is_test, which is 1 if a row is in the test set
 file_directory_df["is_test"] = 0
 file_directory_df.loc[test_idx, "is_test"] = 1
-assert np.isclose(file_directory_df.is_test.mean(), 0.2, rtol=0.001)
+assert np.isclose(file_directory_df.is_test.mean(), test_size, rtol=0.001)
 
 output_file = data_dir / "directory_w_train_test.csv"
 file_directory_df.to_csv(output_file, index=False)
