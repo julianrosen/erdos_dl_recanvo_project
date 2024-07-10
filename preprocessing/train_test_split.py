@@ -35,6 +35,6 @@ file_directory_df.loc[test_idx, "is_test"] = 1
 assert np.isclose(file_directory_df.is_test.mean(), 0.2, rtol=0.001)
 
 output_file = data_dir / "directory_w_train_test.csv"
-file_directory_df.to_csv(output_file)
+file_directory_df.to_csv(output_file, index=False)
 
 print("Train-test split completed, saved to", output_file)
