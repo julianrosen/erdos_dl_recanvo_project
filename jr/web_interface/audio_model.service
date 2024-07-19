@@ -1,0 +1,12 @@
+[Unit]
+Description=Gunicorn for integer addition API
+After=network.target
+
+[Service]
+User=jr
+WorkingDirectory=/home/jr/repos/erdos_dl_recanvo_project/jr/web_interface
+ExecStart=/home/jr/miniconda3/envs/ml_311/bin/gunicorn -w 2 -b :5000 -t 360 --reload flask_audio_model:app
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

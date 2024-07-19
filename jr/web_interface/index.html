@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocalization Interpreter</title>
+</head>
+<body>
+    <h1>Vocalization interpreter</h1>
+    <button id="startRecordingButton">Start recording</button>
+    <button id="stopRecordingButton" disabled>Stop recording</button>
+    <br><br>
+    Prediction
+    <span id=result></span>
+    <script>
+        let audioContext;
+        let mediaRecorder;
+        let audioChunks = [];
+
+        document.getElementById('startRecordingButton').addEventListener('click', startRecording);
+        document.getElementById('stopRecordingButton').addEventListener('click', stopRecording);
+
+        async function startRecording() {
+            // Initialize audio context and media recorder
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+
+            // Event handlers for media recorder
+            mediaRecorder.ondataavailable = event => {
+                audioChunks.push(event.data);
+            };
+
+            mediaRecorder.onstop = async () => {
+                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                audioChunks = [];
+
+                // Send the audio blob to the local API
+                // The local API is a python script being served with gunicorn,
+                // which loads a model, uses it to predict on the audio
+                // being sent, and returns predicted probabilities.
+                try {
+                    const response = await fetch('http://localhost:3000', {
+                        method: 'POST',
+                        body: audioBlob,
+                        headers: {
+                            'Content-Type': 'audio/wav'
+                        }
+                    });
+                    const result = await response.json();
+                    var resultElement = document.getElementById('result');
+                    resultElement.innerHTML = result.result;
+                    console.log('Success:', result);
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            };
+
+            // Start recording
+            mediaRecorder.start();
+            document.getElementById('startRecordingButton').disabled = true;
+            document.getElementById('stopRecordingButton').disabled = false;
+        }
+
+        function stopRecording() {
+            mediaRecorder.stop();
+            document.getElementById('startRecordingButton').disabled = false;
+            document.getElementById('stopRecordingButton').disabled = true;
+        }
+    </script>
+</body>
+</html>
