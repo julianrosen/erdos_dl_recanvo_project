@@ -58,6 +58,8 @@
 
             // Start recording
             mediaRecorder.start();
+            var resultElement = document.getElementById('result');
+            resultElement.innerHTML = "";
             document.getElementById('startRecordingButton').disabled = true;
             document.getElementById('stopRecordingButton').disabled = false;
         }

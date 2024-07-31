@@ -24,7 +24,6 @@ def add_numbers():
     with torch.no_grad():
         features, _ = model.extract_features(waveform)
     features = features[0].mean((0, 1))
-    print(features.shape)
     with open("../model.pkl", "rb") as f:
         my_model = pickle.load(f)
         labels = pickle.load(f)
