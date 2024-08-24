@@ -38,12 +38,12 @@ def extract_noise(
 
 def features_with_one_noise(
     training_data: pd.DataFrame,
+    data_loc: Path,
     noise_data: pd.DataFrame,
     feature_getter,
     sample_rate: int,
     file_seed = None,
     snippet_seed = None,
-    data_loc: Path = data_loc,
 ):
   """Use `model` to extract features from the dataset after adding one layer of noise to every data point.
 
@@ -118,6 +118,7 @@ def features_with_one_noise(
 
 def features_with_noises(
     training_data: pd.DataFrame,
+    data_loc: Path,
     noise_data: pd.DataFrame,
     feature_getter,
     sample_rate: int,
@@ -127,7 +128,6 @@ def features_with_noises(
     amplification: float = 1.0,
     attenuation: float = 1.0,
     random_state = None,
-    data_loc: Path = data_loc,
 ):
   """Use `model` to extract features from `training_data` after adding noise.
 
