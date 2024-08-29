@@ -42,11 +42,12 @@ This whole process of discovery can be seen in the notebook, and we encourage yo
 
 ## How do I navigate this repository?
 
+
 #### Getting started with the data.
 The ReCANVo dataset is pubically available for download [here.](https://zenodo.org/records/5786860).
 In order to run the notebooks in this repository, you should unzip the database and place the audio files (`.wav`) files in the empty folder `/data/wav/` within the repository.
 
-Some of the notebooks rely on first extracting features from these audio files, then feeding the produced PyTorch tensors into our models. Running the script `/scripts/HuBERTexpord.py` will export the features used by apretrained HuBERT over the whole dataset into a folder.
+Some of the notebooks rely on first extracting features from these audio files, then feeding the produced PyTorch tensors into our models. Running the script `/scripts/HuBERTexport.py` will export the features used by apretrained HuBERT over the whole dataset into a folder.
 
 
 ####
