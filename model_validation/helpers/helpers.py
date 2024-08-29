@@ -7,9 +7,9 @@ import torchaudio
 import torch
 from tqdm.notebook import tqdm
 
-# Pretrained HuBERT model
-file_list = Path("../data/tt_small_sessions.csv")
-wav_dir = Path("../data/wav")
+data_dir = Path(__file__).parent.parent.parent / "data"
+file_list = data_dir / "tt_small_sessions.csv"
+wav_dir = data_dir / "wav"
 
 
 def get_hubert_features(participant):
