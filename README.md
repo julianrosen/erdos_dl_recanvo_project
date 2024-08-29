@@ -12,7 +12,7 @@ The ReCANVo dataset consists of ~7k audio recordings of vocalizations from 8 non
 The recordings were taken in a real-world setting, in a number of long sessions held at different locations (later broken into clips), and were categorized on the spot by the speaker's caregiver based on context, non-verbal cues, and familiarity with the speaker. There are several predefined categories such as self talk, frustrated, delighted, request, etc. Caregivers could also specify custom categories. 
 
 #### Our goal: 
-To training a model, per individual, to accurately predict labels. These models should improving upon previous work; see below.
+To training a model, per individual, that to accurately predicts labels and improvesing upon previous work.
 
 #### Related work:
  There have been a few publications on classifying vocalization in the ReCANVo dataset. Most relevant to our work are the two papers:
