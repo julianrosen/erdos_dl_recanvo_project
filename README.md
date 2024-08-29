@@ -42,12 +42,17 @@ This whole process of discovery can be seen in the notebook, and we encourage yo
 
 ## How do I navigate this repository?
 
+- The `/data/` folder contains a lot of utility files, but notably, *not the ReCANVo files themselves.* See below.
+- The `/preprocessing/` folder contains some inquiries into MEL spectrograms and their use for feature generation.
+- The `/noise_engineering/` folder details our explorations into adding background noise, and the effect this has on model performance.
+- The `/model_validation/` folder contains a number of exploratory notebooks. These look into different combinations of ('feature-extractor','classifier') pairs. Many of these notebooks also dig into regularization of our models.
+  - There are subfolders `/model_validation/helpers/` and `/model_validation/scripts/` containing some useful snippets of code. We suggest you only take a look at these as needed.
 
 #### Getting started with the data.
 The ReCANVo dataset is pubically available for download [here.](https://zenodo.org/records/5786860).
 In order to run the notebooks in this repository, you should unzip the database and place the audio files (`.wav`) files in the empty folder `/data/wav/` within the repository.
 
-Some of the notebooks rely on first extracting features from these audio files, then feeding the produced PyTorch tensors into our models. Running the script `/scripts/HuBERTexport.py` will export the features used by apretrained HuBERT over the whole dataset into a folder.
+Some of the notebooks rely on first extracting features from these audio files, then feeding the produced PyTorch tensors into our models. Running the script `/scripts/HuBERTexport.py` will export the features used by apretrained HuBERT over the whole dataset into an empty folder `/data/HuBERT_features/`.
 
 
 ####
