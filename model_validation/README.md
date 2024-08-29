@@ -4,4 +4,5 @@ Contents:
 - `ast_logistic`: AST feature set, using logistic regression classifier
 - `hubert_logistic`: HuBERT feature set, using logistic regression classifier
 - `hubert_dense`: HuBERT feature set, using a neural network with 2 or more dense layers as classifier
+- `huber_fine_tune`: HuBERT feature extractor + 2 dense layers, unfreeze HuBERT and train
 - `helpers`: some helper functions
