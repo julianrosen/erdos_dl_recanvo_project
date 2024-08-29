@@ -34,9 +34,9 @@ For P01 and P05, we trained a number of different deep learning models. All of t
   - XGBoost.
   
 While playing with these models, we noticed something interesting: our baseline model predictions have significantly higher accuracy on vocalizations coming from sessions that were represented in the training data. We believe this due to the model picking up on background sounds from the session. 
-The model's ability to train for identifying sessions hurts the model’s ability to generalize. To mitigate this, we adopted several strategies including:
+The model's ability to train for identifying sessions hurts the model's ability to generalize. To mitigate this, we adopted several strategies including:
 - Creating the train-test split in such a way that all the data points for a few entire sessions are completely contained in the test set.
-- Experimenting with adding extra layers of ambient noise or removing ambient noise to confuse the potential session recognition of the model
+- Experimenting with adding extra layers of ambient noise or removing ambient noise to confuse the potential session recognition of the model. The added noise was taken from the [DEMAND dataset](https://www.kaggle.com/datasets/chrisfilo/demand) ([Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/))
 
 This whole process of discovery can be seen in the notebook, and we encourage you to dig in!
 
