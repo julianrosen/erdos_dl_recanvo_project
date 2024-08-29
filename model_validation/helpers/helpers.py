@@ -1,3 +1,4 @@
+from typing import Any
 from pathlib import Path
 
 import numpy as np
@@ -12,7 +13,27 @@ file_list = data_dir / "tt_small_sessions.csv"
 wav_dir = data_dir / "wav"
 
 
-def get_hubert_features(participant):
+def get_hubert_features(participant: str) -> dict[str, Any]:
+    """
+    Extract HuBERT features for one participant
+
+    Parameters
+    ----------
+    participant: str
+        "P01", "P02", etc.
+
+    Returns
+    -------
+    hubert_features: dict
+        Dictionary with strings as keys. Values are
+        X_tr: 2d torch.tensor with training features
+        y_tr: 1d torch.tensor with training targets (labels)
+        session_tr: 1d np.ndarray with training sessions
+        X_te: 2d torch.tensor with test features
+        X_te: 2d torch.tensor with test targets
+        session_tr: 1d np.ndarray with test sessions
+        label_list: list of labels
+    """
     file_df = pd.read_csv(file_list)
     file_df_one_participant = file_df[file_df.Participant == participant]
     label_counts = file_df_one_participant.Label.value_counts()
@@ -63,5 +84,8 @@ def get_hubert_features(participant):
     }
 
 
-def unweighted_f1(actual, pred):
+def unweighted_f1(actual: np.ndarray, pred: np.ndarray) -> float:
+    """
+    Unweighted f1 score, rounded to 4 decimal places
+    """
     return np.round(f1_score(actual, pred, average="macro"), 4)
