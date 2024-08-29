@@ -1,2 +1,4 @@
 # ignore the RECANVO raw data if it is saved in /data/wav/
 data/wav/
+.tmp*
+*.DS_Store
