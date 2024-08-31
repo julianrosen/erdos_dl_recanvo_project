@@ -1,7 +1,7 @@
 # A Vocal-Cue Interpreter for Minimally Verbal Individuals
 #### Deep Learning Project for the Erdős Institute, May-Summer 2024.
-  Julian Rosen |  Alessandro Malusà | Monalisa Dutta | Rahul Krishna | Atharva Patil | Sarasi Jayasekara
-
+  Monalisa Dutta | Sarasi Jayasekara | Rahul Krishna | Alessandro Malusà | Atharva Patil | Julian Rosen
+  
 ## What is this project about?
 #### Motivation: 
 Nonverbal vocalizations play an important role in communication, particularly for individuals with few spoken words. While caretakers of minimally-verbal individuals often learn to interpret nonverbal vocalizations, the vocalizations can be difficult to interpret by people unfamiliar with the individual.  
@@ -24,7 +24,7 @@ Training a model, per individual, that can accurately predict labels and improvi
 We focused on two participants with large and varied sets of observations (P01, P05). We drop all data points that correspond to labels that have fewer than 30 occurences for the participant.
 
 For P01 and P05, we trained a number of different deep learning models. All of there models have the same 2-part structure: 
-- First, we run data through a feature extractor. The main ones we focused on are pretrained HuBERT (Hidden unit BERT) and AST (Audio Spectrogram Transformer). 
+- First, we run data through a feature extractor. The main ones we focused on are pretrained [HuBERT (Hidden unit BERT)](https://arxiv.org/pdf/2106.07447) and [AST (Audio Spectrogram Transformer)](https://arxiv.org/pdf/2104.01778). 
   - For pretrained HuBERT, we use this model to feature extract by reading off the weights after a single attention-layer hidden unit pass (pretrained HuBERT has 12 such laters - we use only the most primitive).
   - For AST, we consider many possible layers at which to feature extract. 
   - We also tried other approaches, with less success, including extracting features from MEL spectrograms "by hand" using a custom convolutional net.
